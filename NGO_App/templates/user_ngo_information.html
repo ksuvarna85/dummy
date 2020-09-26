@@ -1,0 +1,50 @@
+{% extends 'user_navigation.html' %}
+{% load static %}
+{% block  user_body %}
+
+<section id="signup">
+  <div class="bg-light">
+    <br><br>
+
+    <div class="container">
+      <h1>{{ngo_details.ngo_name}}</h1>
+      <p>Details</p>
+      <p>photo</p>
+      <h2 class="text-center">{{ngo_details.ngo_name}}'s Requirements</h2>
+      <hr>
+      <table class="table table-bordered" id=mytable>
+        <thead>
+          <tr>
+            <th>Sr no.</th>
+            <th>Requirement</th>
+            <th>Quantity</th>
+            <th>Donation</th>
+
+          </tr>
+          {% for i in ngo_req %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.requirement}}</td>
+            <td>{{i.quantity}}</td>
+
+              <form class=""  method="post">
+                {% csrf_token %}
+                <td>
+                <input type="number" min="1" name="donation" value="">
+                </td>
+                <td>
+                <input type="submit" name="" value="Submit">
+                </td>
+              </form>
+
+
+
+
+          </tr>
+          {% endfor %}
+        </thead>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
